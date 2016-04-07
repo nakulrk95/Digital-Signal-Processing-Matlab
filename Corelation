@@ -1,0 +1,24 @@
+%Given the two finite length causal sequence x and y.
+%tThe autocorrelation of signal x and cross correlation of signal x and y.
+clc;
+x =[5 8 6];
+y =[7 5 1 8 -3];
+n1 = length(y)-1;
+n2 = length(x)-1;
+r1 = conv(x,fliplr(y));
+k = -n1:n2;
+subplot(2, 1, 1);
+stem(k,r1);
+xlabel('k');
+ylabel('r');
+title('Cross-correlation of two discrete sequences');
+x1 = [zeros(1,4),x];
+disp(x1);
+nx1 = length(x1) - 1;
+r2 = conv(x, fliplr(x1));
+k1 = -nx1:n2;
+subplot(2, 1, 2);
+stem(k1,r2);
+xlabel('k');
+ylabel('r');
+title('Auto-correlation of two discrete sequences');
